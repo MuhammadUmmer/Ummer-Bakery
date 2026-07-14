@@ -39,6 +39,8 @@
 
 <div class="cart-bar">
     🛒 Cart: <span id="cartCount">0</span> Items
+    <p id="cartTotal">Total: Rs. 0</p>
+    <div id="cartItems"></div>
 </div>
 
 <div style="text-align:center;margin:15px;">
@@ -58,74 +60,109 @@
                onkeyup="searchProducts()">
     </div>
 
-    <div class="product-container">
 
-        <div class="product-card">
+        <div class="product-container">
 
-            <img src="bread.jpg" alt="Bread">
+    <div class="product-card">
 
-            <h3>🍞 Fresh Bread</h3>
+        <img src="bread.jpg" alt="Bread">
 
-            <p>Soft, Fresh & Tasty Bread</p>
+        <h3>🍞 Fresh Bread</h3>
 
-            <span>Rs.240</span>
+        <p>Soft, Fresh & Tasty Bread</p>
 
-            <button onclick="addToCart('Fresh Bread - Rs.240')">
-                🛒 Add to Cart
-            </button>
+        <span>Rs.240</span>
 
-        </div>
-
-        <div class="product-card">
-
-            <img src="cake.jpg" alt="Cake">
-
-            <h3>🎂 Chocolate Cake</h3>
-
-            <p>Fresh Chocolate Cake</p>
-
-            <span>Rs.1500</span>
-
-            <button onclick="addToCart('Chocolate Cake - Rs.1500')">
-                🛒 Add to Cart
-            </button>
-
-        </div>
-
-        <div class="product-card">
-
-            <img src="donuts.jpg" alt="Donuts">
-
-            <h3>🍩 Donuts</h3>
-
-            <p>Fresh & Sweet Donuts</p>
-
-            <span>Rs.100</span>
-
-            <button onclick="addToCart('Donuts - Rs.100')">
-                🛒 Add to Cart
-            </button>
-
-        </div>
-
-        <div class="product-card">
-
-            <img src="biscuits.jpg" alt="Biscuits">
-
-            <h3>🍪 Biscuits</h3>
-
-            <p>Fresh & Crunchy Biscuits</p>
-
-            <span>Rs.700</span>
-
-            <button onclick="addToCart('Biscuits - Rs.700')">
-                🛒 Add to Cart
-            </button>
-
-        </div>
+        <button onclick="addToCart({name:'Fresh Bread', price:240})">
+            🛒 Add to Cart
+        </button>
 
     </div>
 
+    <div class="product-card">
+
+    <img src="gulabjamun.jpg" alt="Gulab Jamun">
+
+    <h3>🍯 Gulab Jamun</h3>
+
+    <p>Soft & Sweet Traditional Gulab Jamun</p>
+
+    <span>Rs.800</span>
+
+    <button onclick="addToCart({name:'Gulab Jamun', price:800})">
+        🛒 Add to Cart
+    </button>
+
+</div>
+
+
+<div class="product-card">
+
+    <img src="burfi.jpg" alt="Burfi">
+
+    <h3>🍬 Special Burfi</h3>
+
+    <p>Fresh & Delicious Milk Burfi</p>
+
+    <span>Rs.1400</span>
+
+    <button onclick="addToCart({name:'Special Burfi', price:1400})">
+        🛒 Add to Cart
+    </button>
+
+</div>
+
+    <div class="product-card">
+
+        <img src="cake.jpg" alt="Cake">
+
+        <h3>🎂 Chocolate Cake</h3>
+
+        <p>Fresh Chocolate Cake</p>
+
+        <span>Rs.1500</span>
+
+        <button onclick="addToCart({name:'Chocolate Cake', price:1500})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img src="donuts.jpg" alt="Donuts">
+
+        <h3>🍩 Donuts</h3>
+
+        <p>Fresh & Sweet Donuts</p>
+
+        <span>Rs.100</span>
+
+        <button onclick="addToCart({name:'Donuts', price:100})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img src="biscuits.jpg" alt="Biscuits">
+
+        <h3>🍪 Biscuits</h3>
+
+        <p>Fresh & Crunchy Biscuits</p>
+
+        <span>Rs.700</span>
+
+        <button onclick="addToCart({name:'Biscuits', price:700})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+</div>
 </section>
 
 <!-- Why Choose Us -->
