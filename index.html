@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ummer Bakery 3D</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>🍞 Ummer Bakery</h1>
+
+        <p>Fresh Bread, Cakes & Delicious Bakery Items Every Day</p>
+
+        <a href="#products">
+            <button class="hero-btn">Explore Products</button>
+        </a>
+
+    </div>
+
+</header>
+
+<nav class="navbar">
+
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#" onclick="showReviews()">⭐ Reviews</a>
+    <a href="#contact">Contact</a>
+
+</nav>
+
+<div class="cart-bar">
+    🛒 Cart: <span id="cartCount">0</span> Items
+</div>
+
+<div style="text-align:center;margin:15px;">
+    <button onclick="checkoutCart()">
+        ✅ Checkout on WhatsApp
+    </button>
+</div>
+
+<section class="featured" id="products">
+
+    <h2>Our Products</h2>
+
+    <div class="search-box">
+        <input type="text"
+               id="searchInput"
+               placeholder="🔍 Search Products..."
+               onkeyup="searchProducts()">
+    </div>
+
+    <div class="product-container">
+
+        <div class="product-card">
+
+            <img src="bread.jpg" alt="Bread">
+
+            <h3>🍞 Fresh Bread</h3>
+
+            <p>Soft, Fresh & Tasty Bread</p>
+
+            <span>Rs.240</span>
+
+            <button onclick="addToCart('Fresh Bread - Rs.240')">
+                🛒 Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="cake.jpg" alt="Cake">
+
+            <h3>🎂 Chocolate Cake</h3>
+
+            <p>Fresh Chocolate Cake</p>
+
+            <span>Rs.1500</span>
+
+            <button onclick="addToCart('Chocolate Cake - Rs.1500')">
+                🛒 Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="donuts.jpg" alt="Donuts">
+
+            <h3>🍩 Donuts</h3>
+
+            <p>Fresh & Sweet Donuts</p>
+
+            <span>Rs.100</span>
+
+            <button onclick="addToCart('Donuts - Rs.100')">
+                🛒 Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="biscuits.jpg" alt="Biscuits">
+
+            <h3>🍪 Biscuits</h3>
+
+            <p>Fresh & Crunchy Biscuits</p>
+
+            <span>Rs.700</span>
+
+            <button onclick="addToCart('Biscuits - Rs.700')">
+                🛒 Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-us">
+
+    <h2>Why Choose Ummer Bakery?</h2>
+
+    <div class="why-container">
+
+        <div class="why-card">
+            <h3>🥖 Fresh Daily</h3>
+            <p>Every product is baked fresh every day.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>🍰 Premium Quality</h3>
+            <p>Premium quality ingredients with great taste.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>🚚 Fast Service</h3>
+            <p>Quick service and easy WhatsApp ordering.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- About -->
+<section id="about">
+
+    <h2>About Us</h2>
+
+    <p>
+        Welcome to Ummer Bakery. We provide fresh bread, cakes,
+        donuts and biscuits every day with premium quality
+        ingredients and excellent customer service.
+    </p>
+
+</section>
+
+<!-- Contact -->
+<section class="order" id="contact">
+
+    <h2>Contact Us</h2>
+
+    <p>📞 Phone: 03125940498</p>
+
+    <p>📍 Datta Stop, District Mansehra, Pakistan</p>
+
+    <br>
+
+    <a href="https://wa.me/923059642006" target="_blank">
+        <button>🛒 Order on WhatsApp</button>
+    </a>
+
+    <br><br>
+
+    <a href="https://maps.app.goo.gl/meQYLKkcp8U9vBHx5" target="_blank">
+        <button>📍 View on Google Maps</button>
+    </a>
+
+</section>
+
+<!-- Reviews -->
+<div class="review-popup" id="reviewPopup">
+
+    <h2>⭐ Customer Reviews</h2>
+
+    <h3>👤 Ali Khan</h3>
+    <p>⭐⭐⭐⭐⭐</p>
+    <p>Fresh bread and excellent quality.</p>
+
+    <hr>
+
+    <h3>👩 Ayesha</h3>
+    <p>⭐⭐⭐⭐⭐</p>
+    <p>The cakes are delicious.</p>
+
+    <hr>
+
+    <h3>👨 Usman</h3>
+    <p>⭐⭐⭐⭐⭐</p>
+    <p>Best bakery in Datta Mansehra.</p>
+
+</div>
+
+<!-- Footer -->
+<footer>
+
+    <p>© 2026 Ummer Bakery. All Rights Reserved.</p>
+
+</footer>
+
+<!-- Scroll To Top -->
+<button id="topBtn" onclick="topFunction()">⬆</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
