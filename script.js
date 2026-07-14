@@ -126,12 +126,66 @@ let cart = [];
 
 function addToCart(product){
 
-    cart.push(product);
+    let existing = cart.find(item => item.name === product.name);
 
-    document.getElementById("cartCount").innerText =
-    cart.length;
+    if(existing){
+        existing.quantity++;
+    }
+    else{
+        product.quantity = 1;
+        cart.push(product);
+    }
+
+    updateCart();
 
     showMessage("✅ Added to Cart");
+}
+
+
+function updateCart(){
+
+    let count = 0;
+    let total = 0;
+
+    let cartBox = document.getElementById("cartItems");
+
+    cartBox.innerHTML = "";
+
+    cart.forEach((item,index)=>{
+
+        count += item.quantity;
+        total += item.price * item.quantity;
+
+
+        cartBox.innerHTML += `
+        <div>
+            ${item.name} x ${item.quantity} 
+            = Rs.${item.price * item.quantity}
+
+            <button onclick="removeFromCart(${index})">
+                ❌ Remove
+            </button>
+        </div>
+        `;
+
+    });
+
+
+    document.getElementById("cartCount").innerText = count;
+
+    document.getElementById("cartTotal").innerText =
+    "Total: Rs. " + total;
+}
+
+
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+    showMessage("❌ Removed from Cart");
 
 }
 
@@ -193,7 +247,7 @@ function checkoutCart(){
     cart.forEach((item,index)=>{
 
         message +=
-        (index+1)+". "+item+"\n";
+(index+1)+". "+item.name+" x "+item.quantity+" = Rs. "+(item.price * item.quantity)+"\n";
 
     });
 
@@ -207,3 +261,4 @@ function checkoutCart(){
 
 
 console.log("Ummer Bakery JS Loaded");
+
