@@ -13,17 +13,43 @@
 
 <header class="hero" id="home">
 
+    <div class="hero-overlay"></div>
+
     <div class="hero-content">
 
-        <h1>🍞 Ummer Bakery</h1>
+        <h1>🍰 Ummer Bakery 3D</h1>
 
-        <p>Fresh Bread, Cakes & Delicious Bakery Items Every Day</p>
+        <p>
+            Fresh Bread • Delicious Cakes • Sweet Donuts
+            <br>
+            Baked Fresh Every Day
+        </p>
 
-        <a href="#products">
-            <button class="hero-btn">Explore Products</button>
-        </a>
+        <div class="hero-buttons">
+
+            <a href="#products" class="hero-btn">
+         Shop Now
+         </a>
+ 
+       <a href="#contact" class="hero-btn secondary">
+    Contact Us
+    </a>
+
+        </div>
 
     </div>
+
+    <div class="hero-collage">
+
+    <img src="gulabjamun.jpg" class="float gulab" alt="Fresh Gulab Jamun">
+
+    <img src="cake.jpg" class="float cake" alt="Chocolate Cake">
+
+    <img src="donuts.jpg" class="float donut" alt="Fresh Sweet Donuts">
+
+    <img src="biscuits.jpg" class="float biscuit" alt="Fresh Crunchy Biscuits">
+
+</div>
 
 </header>
 
@@ -32,22 +58,44 @@
     <a href="#home">Home</a>
     <a href="#products">Products</a>
     <a href="#about">About</a>
-    <a href="#" onclick="showReviews()">⭐ Reviews</a>
+    <a href="javascript:void(0)" onclick="showReviews()">⭐ Reviews</a>
     <a href="#contact">Contact</a>
 
 </nav>
 
-<div class="cart-bar">
-    🛒 Cart: <span id="cartCount">0</span> Items
-    <p id="cartTotal">Total: Rs. 0</p>
-    <div id="cartItems"></div>
-</div>
+<section class="cart-section" id="cart">
 
-<div style="text-align:center;margin:15px;">
-    <button onclick="checkoutCart()">
-        ✅ Checkout on WhatsApp
-    </button>
-</div>
+    <h2>🛒 Shopping Cart</h2>
+
+    <p class="cart-counter">
+        Items: <span id="cartCount">0</span>
+    </p>
+
+    <div id="cartItems">
+
+        <p class="empty-cart">
+            Your cart is empty.
+        </p>
+
+    </div>
+
+    <h3 id="cartTotal">
+        Total: Rs. 0
+    </h3>
+
+    <div class="cart-buttons">
+
+        <button onclick="clearCart()">
+            🗑 Clear Cart
+        </button>
+
+        <button onclick="checkoutCart()">
+            📲 WhatsApp Checkout
+        </button>
+
+    </div>
+
+</section>
 
 <section class="featured" id="products">
 
@@ -81,7 +129,7 @@
 
     <div class="product-card">
 
-    <img src="gulabjamun.jpg" alt="Gulab Jamun">
+    <img src="gulabjamun.jpg" alt="Fresh Gulab Jamun">
 
     <h3>🍯 Gulab Jamun</h3>
 
@@ -98,7 +146,7 @@
 
 <div class="product-card">
 
-    <img src="burfi.jpg" alt="Burfi">
+    <img src="burfi.jpg" alt="Special Milk Burfi">
 
     <h3>🍬 Special Burfi</h3>
 
@@ -114,7 +162,7 @@
 
     <div class="product-card">
 
-        <img src="cake.jpg" alt="Cake">
+        <img src="cake.jpg" alt="Chocolate Cake">
 
         <h3>🎂 Chocolate Cake</h3>
 
@@ -148,7 +196,7 @@
 
     <div class="product-card">
 
-        <img src="biscuits.jpg" alt="Biscuits">
+        <img src="biscuits.jpg" alt="Fresh Crunchy Biscuits">
 
         <h3>🍪 Biscuits</h3>
 
@@ -215,15 +263,15 @@
 
     <br>
 
-    <a href="https://wa.me/923059642006" target="_blank">
-        <button>🛒 Order on WhatsApp</button>
-    </a>
+    <a href="https://wa.me/923059642006" target="_blank" class="order-btn">
+    🛒 Order on WhatsApp
+</a>
 
     <br><br>
 
-    <a href="https://maps.app.goo.gl/meQYLKkcp8U9vBHx5" target="_blank">
-        <button>📍 View on Google Maps</button>
-    </a>
+    <a href="https://maps.app.goo.gl/meQYLKkcp8U9vBHx5" target="_blank" class="order-btn">
+    📍 View on Google Maps
+</a>
 
 </section>
 
@@ -253,7 +301,7 @@
 <!-- Footer -->
 <footer>
 
-    <p>© 2026 Ummer Bakery. All Rights Reserved.</p>
+    <p>© 2026 Ummer Bakery 3D. All Rights Reserved.</p>
 
 </footer>
 
