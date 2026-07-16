@@ -1,264 +1,334 @@
 // ===============================
-// Ummer Bakery 3D Final V2 JS
+// Professional Cart System V3
 // ===============================
-
-
-// 3D Product Card Effect
-
-const cards = document.querySelectorAll(".product-card");
-
-cards.forEach(card => {
-
-    card.addEventListener("mousemove", (e)=>{
-
-        if(window.innerWidth < 768) return;
-
-        const rect = card.getBoundingClientRect();
-
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const rotateY = (x - rect.width / 2) / 20;
-        const rotateX = (rect.height / 2 - y) / 20;
-
-        card.style.transform =
-        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-
-    });
-
-
-    card.addEventListener("mouseleave",()=>{
-
-        card.style.transform =
-        "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
-
-    });
-
-});
-
-
-// Reviews Popup
-
-function showReviews(){
-
-    const box = document.getElementById("reviewPopup");
-
-    if(box.style.display === "block"){
-
-        box.style.display = "none";
-
-    }else{
-
-        box.style.display = "block";
-
-    }
-
-}
-
-
-// Scroll Top Button
-
-window.onscroll = function(){
-
-    const btn = document.getElementById("topBtn");
-
-    if(document.documentElement.scrollTop > 300){
-
-        btn.style.display = "block";
-
-    }else{
-
-        btn.style.display = "none";
-
-    }
-
-};
-
-
-function topFunction(){
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-
-// Search Products
-
-function searchProducts(){
-
-    const input =
-    document.getElementById("searchInput").value.toLowerCase();
-
-
-    const cards =
-    document.querySelectorAll(".product-card");
-
-
-    cards.forEach(card=>{
-
-        const text = card.innerText.toLowerCase();
-
-
-        if(text.includes(input)){
-
-            card.style.display="block";
-
-        }else{
-
-            card.style.display="none";
-
-        }
-
-    });
-
-}
-
-
-
-// Cart System
 
 let cart = [];
 
+try {
 
-function addToCart(product){
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let existing = cart.find(item => item.name === product.name);
+}
+catch(error){
 
-    if(existing){
-        existing.quantity++;
+    cart = [];
+
+}
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function addToCart(product) {
+
+    let item = cart.find(p => p.name === product.name);
+
+    if (item) {
+        item.quantity++;
+    } else {
+        cart.push({
+            name: product.name,
+            price: product.price,
+            quantity: 1
+        });
     }
-    else{
-        product.quantity = 1;
-        cart.push(product);
-    }
 
+    saveCart();
     updateCart();
-
     showMessage("✅ Added to Cart");
 }
 
+function increaseQty(index) {
+    cart[index].quantity++;
+    saveCart();
+    updateCart();
+}
 
-function updateCart(){
+function decreaseQty(index) {
 
-    let count = 0;
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+    } else {
+        cart.splice(index, 1);
+    }
+
+    saveCart();
+    updateCart();
+}
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    saveCart();
+
+    updateCart();
+
+    showMessage("❌ Item Removed");
+}
+
+function clearCart() {
+
+    cart = [];
+
+    saveCart();
+
+    updateCart();
+
+    showMessage("🗑 Cart Cleared");
+}
+
+function updateCart() {
+
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+
+    cartItems.innerHTML = "";
+
     let total = 0;
+    let count = 0;
 
-    let cartBox = document.getElementById("cartItems");
+    if (cart.length === 0) {
 
-    cartBox.innerHTML = "";
+        cartItems.innerHTML =
+        "<p class='empty-cart'>Your cart is empty.</p>";
 
-    cart.forEach((item,index)=>{
+        cartCount.innerText = "0";
+        cartTotal.innerText = "Total: Rs. 0";
 
-        count += item.quantity;
+        return;
+    }
+
+    cart.forEach((item, index) => {
+
         total += item.price * item.quantity;
+        count += item.quantity;
 
+        cartItems.innerHTML += `
+        <div class="cart-item">
 
-        cartBox.innerHTML += `
-        <div>
-            ${item.name} x ${item.quantity} 
-            = Rs.${item.price * item.quantity}
+            <div>
+                <strong>${item.name}</strong><br>
+                Rs. ${item.price} × ${item.quantity}
+            </div>
 
-            <button onclick="removeFromCart(${index})">
-                ❌ Remove
-            </button>
+            <div>
+
+                <button onclick="decreaseQty(${index})">−</button>
+
+                <button onclick="increaseQty(${index})">+</button>
+
+                <button onclick="removeFromCart(${index})">❌</button>
+
+            </div>
+
         </div>
         `;
 
     });
 
-
-    document.getElementById("cartCount").innerText = count;
-
-    document.getElementById("cartTotal").innerText =
-    "Total: Rs. " + total;
-}
-
-
-
-function removeFromCart(index){
-
-    cart.splice(index,1);
-
-    updateCart();
-
-    showMessage("❌ Removed from Cart");
+    cartCount.innerText = count;
+    cartTotal.innerText = "Total: Rs. " + total;
 
 }
 
+function checkoutCart() {
 
+    if (cart.length === 0) {
 
-// Message Popup
-
-function showMessage(text){
-
-    let msg = document.createElement("div");
-
-    msg.innerText = text;
-
-    msg.style.position="fixed";
-    msg.style.bottom="30px";
-    msg.style.left="50%";
-    msg.style.transform="translateX(-50%)";
-    msg.style.background="#ff9800";
-    msg.style.color="white";
-    msg.style.padding="15px 25px";
-    msg.style.borderRadius="30px";
-    msg.style.zIndex="9999";
-    msg.style.fontWeight="bold";
-
-
-    document.body.appendChild(msg);
-
-
-    setTimeout(()=>{
-
-        msg.remove();
-
-    },2500);
-
-}
-
-
-
-// WhatsApp Checkout
-
-function checkoutCart(){
-
-    if(cart.length === 0){
-
-        showMessage("🛒 Cart is empty");
+        showMessage("🛒 Cart is Empty");
 
         return;
 
     }
 
+    let phone = "923059642006";
 
-    let phone="923059642006";
+    let message = "🍞 Ummer Bakery Order\n\n";
 
+    let total = 0;
 
-    let message =
-    "🍞 Ummer Bakery Order\n\n";
+    cart.forEach((item, i) => {
 
-
-    cart.forEach((item,index)=>{
+        total += item.price * item.quantity;
 
         message +=
-(index+1)+". "+item.name+" x "+item.quantity+" = Rs. "+(item.price * item.quantity)+"\n";
+`${i+1}. ${item.name}
+Qty: ${item.quantity}
+Price: Rs. ${item.price * item.quantity}
+
+`;
 
     });
 
+    message += "---------------------\n";
+    message += "Grand Total: Rs. " + total;
 
     window.open(
-        "https://wa.me/"+phone+"?text="+encodeURIComponent(message),
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message),
         "_blank"
     );
 
 }
 
+window.addEventListener("DOMContentLoaded",()=>{
 
-console.log("Ummer Bakery JS Loaded");
+    updateCart();
 
+});
+
+// ===============================
+// V4 Premium Effects
+// ===============================
+
+// Toast Message
+function showMessage(text){
+
+    const toast = document.createElement("div");
+
+    toast.className = "toast";
+
+    toast.innerText = text;
+
+    document.body.appendChild(toast);
+
+    setTimeout(()=>{
+        toast.classList.add("show");
+    },100);
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+
+        setTimeout(()=>{
+            toast.remove();
+        },400);
+
+    },2000);
+
+}
+
+
+// Product Search
+function searchProducts(){
+
+    let input = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let cards = document.querySelectorAll(".product-card");
+
+    cards.forEach(card=>{
+
+        let text = card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+    card.style.display="flex";
+
+}else{
+
+    card.style.display="none";
+
+}
+
+    });
+
+}
+
+
+// Reviews Popup
+function showReviews(){
+
+    const popup = document.getElementById("reviewPopup");
+
+    if(popup.style.display === "block"){
+
+        popup.style.display = "none";
+
+    }else{
+
+        popup.style.display = "block";
+
+        window.scrollTo({
+
+            top: popup.offsetTop - 100,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+}
+
+
+// Scroll To Top
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY>400){
+
+        topBtn.style.display="block";
+
+    }else{
+
+        topBtn.style.display="none";
+
+    }
+
+});
+
+
+function topFunction(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+// Premium 3D Mouse Effect
+window.addEventListener("DOMContentLoaded", () => {
+
+    if(window.innerWidth > 768){
+
+        document.querySelectorAll(".product-card").forEach(card => {
+
+            card.addEventListener("mousemove", (e) => {
+
+                let rect = card.getBoundingClientRect();
+
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+                let rotateY = (x - rect.width / 2) / 12;
+                let rotateX = -(y - rect.height / 2) / 12;
+
+                card.style.transform =
+                `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+
+            });
+
+
+            card.addEventListener("mouseleave", () => {
+
+                card.style.transform = "";
+
+            });
+
+        });
+
+    }
+
+});
