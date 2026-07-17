@@ -17,51 +17,315 @@
 
     <div class="hero-content">
 
-        <h1>🍰 Ummer Bakery 3D</h1>
+        <span class="hero-tag">
+            Premium Bakery Experience
+        </span>
+
+        <h1>
+            Ummer Bakery 3D
+        </h1>
 
         <p>
-            Fresh Bread • Delicious Cakes • Sweet Donuts
+            Fresh Bread • Premium Cakes • Delicious Sweets
             <br>
-            Baked Fresh Every Day
+            Crafted With Love Every Day
         </p>
 
         <div class="hero-buttons">
 
             <a href="#products" class="hero-btn">
-         Shop Now
-         </a>
- 
-       <a href="#contact" class="hero-btn secondary">
-    Contact Us
-    </a>
+                🛒 Explore Products
+            </a>
+
+            <a href="#contact" class="hero-btn secondary">
+                Contact Us
+            </a>
 
         </div>
 
     </div>
 
+
     <div class="hero-collage">
 
-    <img src="gulabjamun.jpg" class="float gulab" alt="Fresh Gulab Jamun">
+        <img src="cake.jpg"
+        class="float cake"
+        alt="Premium Cake">
 
-    <img src="cake.jpg" class="float cake" alt="Chocolate Cake">
 
-    <img src="donuts.jpg" class="float donut" alt="Fresh Sweet Donuts">
+        <img src="gulabjamun.jpg"
+        class="float gulab"
+        alt="Gulab Jamun">
 
-    <img src="biscuits.jpg" class="float biscuit" alt="Fresh Crunchy Biscuits">
 
-</div>
+        <img src="donuts.jpg"
+        class="float donut"
+        alt="Donuts">
+
+
+        <img src="biscuits.jpg"
+        class="float biscuit"
+        alt="Biscuits">
+
+    </div>
+
 
 </header>
 
 <nav class="navbar">
 
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-    <a href="javascript:void(0)" onclick="showReviews()">⭐ Reviews</a>
-    <a href="#contact">Contact</a>
+    <div class="logo">
+        🍰 Ummer Bakery
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#products">
+            Products
+        </a>
+
+        <a href="#services">
+            Services
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#reviews">⭐ Reviews</a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </div>
+
 
 </nav>
+
+
+
+
+<section class="featured" id="products">
+
+    <div class="section-title">
+
+        <span>
+            Our Bakery Collection
+        </span>
+
+        <h2>
+            Fresh Products Made With Love
+        </h2>
+
+        <p>
+            Discover our premium breads, cakes, sweets and bakery items.
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input 
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search Fresh Products..."
+        onkeyup="searchProducts()">
+
+    </div>
+
+
+        <div class="product-container">
+
+
+<!-- Bread -->
+
+<div class="product-card">
+
+    <div class="product-image">
+        <img src="bread.jpg" alt="Fresh Bread">
+    </div>
+
+    <div class="product-info">
+
+        <span class="category">Bakery</span>
+
+        <h3>🍞 Fresh Bread</h3>
+
+        <p>Soft, fresh and tasty bread baked every day.</p>
+
+        <div class="price">
+            Rs.240
+        </div>
+
+        <button onclick="addToCart({name:'Fresh Bread', price:240})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- Gulab Jamun -->
+
+<div class="product-card">
+
+    <div class="product-image">
+        <img src="gulabjamun.jpg" alt="Gulab Jamun">
+    </div>
+
+    <div class="product-info">
+
+        <span class="category">Sweets</span>
+
+        <h3>🍯 Gulab Jamun</h3>
+
+        <p>Soft and sweet traditional gulab jamun.</p>
+
+        <div class="price">
+            Rs.800
+        </div>
+
+        <button onclick="addToCart({name:'Gulab Jamun', price:800})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- Burfi -->
+
+<div class="product-card">
+
+    <div class="product-image">
+        <img src="burfi.jpg" alt="Special Burfi">
+    </div>
+
+    <div class="product-info">
+
+        <span class="category">Premium Sweet</span>
+
+        <h3>🍬 Special Burfi</h3>
+
+        <p>Fresh milk burfi with premium taste.</p>
+
+        <div class="price">
+            Rs.1400
+        </div>
+
+        <button onclick="addToCart({name:'Special Burfi', price:1400})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- Cake -->
+
+<div class="product-card">
+
+    <div class="product-image">
+        <img src="cake.jpg" alt="Chocolate Cake">
+    </div>
+
+    <div class="product-info">
+
+        <span class="category">Cakes</span>
+
+        <h3>🎂 Chocolate Cake</h3>
+
+        <p>Fresh chocolate cake for every celebration.</p>
+
+        <div class="price">
+            Rs.1500
+        </div>
+
+        <button onclick="addToCart({name:'Chocolate Cake', price:1500})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- Donuts -->
+
+<div class="product-card">
+
+    <div class="product-image">
+        <img src="donuts.jpg" alt="Donuts">
+    </div>
+
+    <div class="product-info">
+
+        <span class="category">Desserts</span>
+
+        <h3>🍩 Donuts</h3>
+
+        <p>Fresh and sweet donuts made daily.</p>
+
+        <div class="price">
+            Rs.100
+        </div>
+
+        <button onclick="addToCart({name:'Donuts', price:100})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- Biscuits -->
+
+<div class="product-card">
+
+    <div class="product-image">
+        <img src="biscuits.jpg" alt="Biscuits">
+    </div>
+
+    <div class="product-info">
+
+        <span class="category">Snacks</span>
+
+        <h3>🍪 Biscuits</h3>
+
+        <p>Crunchy and delicious fresh biscuits.</p>
+
+        <div class="price">
+            Rs.700
+        </div>
+
+        <button onclick="addToCart({name:'Biscuits', price:700})">
+            🛒 Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+</div>
+ 
+</section>
 
 <section class="cart-section" id="cart">
 
@@ -97,185 +361,493 @@
 
 </section>
 
-<section class="featured" id="products">
+<!-- Services Section -->
 
-    <h2>Our Products</h2>
+<section class="services" id="services">
 
-    <div class="search-box">
-        <input type="text"
-               id="searchInput"
-               placeholder="🔍 Search Products..."
-               onkeyup="searchProducts()">
-    </div>
+    <div class="section-title">
 
+        <span>
+            Our Services
+        </span>
 
-        <div class="product-container">
+        <h2>
+            What We Offer
+        </h2>
 
-    <div class="product-card">
-
-        <img src="bread.jpg" alt="Bread">
-
-        <h3>🍞 Fresh Bread</h3>
-
-        <p>Soft, Fresh & Tasty Bread</p>
-
-        <span>Rs.240</span>
-
-        <button onclick="addToCart({name:'Fresh Bread', price:240})">
-            🛒 Add to Cart
-        </button>
-
-    </div>
-
-    <div class="product-card">
-
-    <img src="gulabjamun.jpg" alt="Fresh Gulab Jamun">
-
-    <h3>🍯 Gulab Jamun</h3>
-
-    <p>Soft & Sweet Traditional Gulab Jamun</p>
-
-    <span>Rs.800</span>
-
-    <button onclick="addToCart({name:'Gulab Jamun', price:800})">
-        🛒 Add to Cart
-    </button>
-
-</div>
-
-
-<div class="product-card">
-
-    <img src="burfi.jpg" alt="Special Milk Burfi">
-
-    <h3>🍬 Special Burfi</h3>
-
-    <p>Fresh & Delicious Milk Burfi</p>
-
-    <span>Rs.1400</span>
-
-    <button onclick="addToCart({name:'Special Burfi', price:1400})">
-        🛒 Add to Cart
-    </button>
-
-</div>
-
-    <div class="product-card">
-
-        <img src="cake.jpg" alt="Chocolate Cake">
-
-        <h3>🎂 Chocolate Cake</h3>
-
-        <p>Fresh Chocolate Cake</p>
-
-        <span>Rs.1500</span>
-
-        <button onclick="addToCart({name:'Chocolate Cake', price:1500})">
-            🛒 Add to Cart
-        </button>
+        <p>
+            Professional bakery services for every occasion.
+        </p>
 
     </div>
 
 
-    <div class="product-card">
+    <div class="services-container">
 
-        <img src="donuts.jpg" alt="Donuts">
 
-        <h3>🍩 Donuts</h3>
+        <div class="service-card">
 
-        <p>Fresh & Sweet Donuts</p>
+            <h3>
+                🎂 Custom Cakes
+            </h3>
 
-        <span>Rs.100</span>
+            <p>
+                Beautiful cakes designed for birthdays,
+                weddings and special events.
+            </p>
 
-        <button onclick="addToCart({name:'Donuts', price:100})">
-            🛒 Add to Cart
-        </button>
+        </div>
+
+
+
+        <div class="service-card">
+
+            <h3>
+                🥖 Fresh Bakery
+            </h3>
+
+            <p>
+                Fresh bread, biscuits and bakery items
+                prepared daily.
+            </p>
+
+        </div>
+
+
+
+        <div class="service-card">
+
+            <h3>
+                🚚 Event Orders
+            </h3>
+
+            <p>
+                Large orders with fast and reliable service.
+            </p>
+
+        </div>
+
 
     </div>
 
 
-    <div class="product-card">
+</section>
 
-        <img src="biscuits.jpg" alt="Fresh Crunchy Biscuits">
 
-        <h3>🍪 Biscuits</h3>
+<!-- How We Work -->
 
-        <p>Fresh & Crunchy Biscuits</p>
+<section class="how-work">
 
-        <span>Rs.700</span>
+    <div class="section-title">
 
-        <button onclick="addToCart({name:'Biscuits', price:700})">
-            🛒 Add to Cart
-        </button>
+        <span>
+            Simple Process
+        </span>
+
+        <h2>
+            How We Work
+        </h2>
+
+        <p>
+            From order to delivery, we make everything simple.
+        </p>
 
     </div>
 
-</div>
+
+    <div class="work-container">
+
+
+        <div class="work-card">
+
+            <div class="work-number">
+                01
+            </div>
+
+            <h3>
+                Choose Product
+            </h3>
+
+            <p>
+                Select your favorite bakery items.
+            </p>
+
+        </div>
+
+
+
+        <div class="work-card">
+
+            <div class="work-number">
+                02
+            </div>
+
+            <h3>
+                Place Order
+            </h3>
+
+            <p>
+                Order easily through WhatsApp.
+            </p>
+
+        </div>
+
+
+
+        <div class="work-card">
+
+            <div class="work-number">
+                03
+            </div>
+
+            <h3>
+                Fresh Delivery
+            </h3>
+
+            <p>
+                Receive fresh products quickly.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
 </section>
 
 <!-- Why Choose Us -->
-<section class="why-us">
 
-    <h2>Why Choose Ummer Bakery?</h2>
+<section class="why-us" id="why-us">
+
+
+    <div class="section-title">
+
+        <span>
+            Why Choose Us
+        </span>
+
+        <h2>
+            Why Customers Love Ummer Bakery
+        </h2>
+
+        <p>
+            Quality, freshness and great service in every bite.
+        </p>
+
+    </div>
+
+
 
     <div class="why-container">
 
-        <div class="why-card">
-            <h3>🥖 Fresh Daily</h3>
-            <p>Every product is baked fresh every day.</p>
-        </div>
 
         <div class="why-card">
-            <h3>🍰 Premium Quality</h3>
-            <p>Premium quality ingredients with great taste.</p>
+
+            <div class="why-icon">
+                🥖
+            </div>
+
+            <h3>
+                Fresh Every Day
+            </h3>
+
+            <p>
+                All bakery items are prepared fresh
+                with premium ingredients.
+            </p>
+
         </div>
 
+
+
         <div class="why-card">
-            <h3>🚚 Fast Service</h3>
-            <p>Quick service and easy WhatsApp ordering.</p>
+
+            <div class="why-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Premium Quality
+            </h3>
+
+            <p>
+                We focus on taste, quality and
+                customer satisfaction.
+            </p>
+
+        </div>
+
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                🚚
+            </div>
+
+            <h3>
+                Fast Service
+            </h3>
+
+            <p>
+                Easy ordering and quick WhatsApp
+                customer support.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+<!-- How We Serve Our Customers -->
+
+<section class="how-work">
+
+    <div class="section-title">
+
+        <span>
+            Customer Experience
+        </span>
+
+        <h2>
+            How We Serve Our Customers
+        </h2>
+
+        <p>
+            We don't just make bakery items, we create special moments for our customers.
+        </p>
+
+    </div>
+
+
+    <div class="work-container">
+
+
+        <div class="work-card">
+
+            <div class="work-number">
+                01
+            </div>
+
+            <h3>
+                Understand 🍰
+            </h3>
+
+            <p>
+                First, we understand our customer's needs —
+                whether it’s a birthday cake, a special occasion,
+                or a custom bakery order.
+            </p>
+
+        </div>
+
+
+
+        <div class="work-card">
+
+            <div class="work-number">
+                02
+            </div>
+
+            <h3>
+                Create 👨‍🍳
+            </h3>
+
+            <p>
+                Our skilled team prepares fresh and delicious
+                bakery products using quality ingredients and
+                great care.
+            </p>
+
+        </div>
+
+
+
+        <div class="work-card">
+
+            <div class="work-number">
+                03
+            </div>
+
+            <h3>
+                Customize ✨
+            </h3>
+
+            <p>
+                We personalize designs, flavors, and orders
+                according to our customers’ preferences.
+            </p>
+
+        </div>
+
+
+
+        <div class="work-card">
+
+            <div class="work-number">
+                04
+            </div>
+
+            <h3>
+                Deliver 🚚
+            </h3>
+
+            <p>
+                We deliver fresh, safely packed, and
+                high-quality products right to our customers.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <p class="work-quote">
+
+        "At Ummer Bakery, we don’t just make bakery items —
+        we create special moments and unforgettable memories
+        for our customers."
+
+    </p>
+
+
+</section>
+
+<!-- About Section -->
+
+<section class="about" id="about">
+
+
+    <div class="about-content">
+
+
+        <span>
+            About Ummer Bakery
+        </span>
+
+
+        <h2>
+            Creating Sweet Memories With Fresh Taste
+        </h2>
+
+
+        <p>
+            Welcome to Ummer Bakery. We create fresh breads,
+            delicious cakes, premium sweets and bakery items
+            with quality ingredients and a passion for great taste.
+        </p>
+
+
+        <p>
+            Our mission is to provide customers with fresh,
+            tasty and memorable bakery experiences every day.
+        </p>
+
+
+        <a href="#products" class="hero-btn">
+            Explore Products
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- Premium Contact Section -->
+
+<section class="contact-section" id="contact">
+
+    <div class="contact-header">
+
+        <span class="contact-tag">CONTACT US</span>
+
+        <h2>Get in Touch</h2>
+
+        <h3>Start a conversation with our team.</h3>
+
+        <p>
+            Whether you're looking for a custom cake, fresh bakery products,
+            or want to discuss a special order, we're here to help.
+            Our team is ready to make your moments even sweeter.
+        </p>
+
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="contact-card">
+
+            <div class="icon">📧</div>
+
+            <h3>Email</h3>
+
+            <a href="mailto:omer.ghafoor5342@gmail.com">
+    omer.ghafoor5342@gmail.com
+</a>
+
+        </div>
+
+        <div class="contact-card">
+
+            <div class="icon">📞</div>
+
+            <h3>Phone</h3>
+
+            <a href="tel:+923125940498">
+    03125940498
+</a>
+
+        </div>
+
+        <div class="contact-card">
+
+            <div class="icon">📍</div>
+
+            <h3>Location</h3>
+
+            <p>Datta Stop, District Mansehra, Pakistan</p>
+
+        </div>
+
+        <div class="contact-card">
+
+            <div class="icon">🗺️</div>
+
+            <h3>Google Maps</h3>
+
+            <a href="https://maps.app.goo.gl/meQYLKkcp8U9vBHx5" target="_blank">
+    View on Google Maps
+</a>
+
+        </div>
+
+        <div class="contact-card">
+
+            <div class="icon">💬</div>
+
+            <h3>WhatsApp</h3>
+
+            <a href="https://wa.me/923059642006" target="_blank">
+    Order Now
+</a>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- About -->
-<section id="about">
+<!-- Reviews Section -->
 
-    <h2>About Us</h2>
+<section class="reviews-section" id="reviews">
 
-    <p>
-        Welcome to Ummer Bakery. We provide fresh bread, cakes,
-        donuts and biscuits every day with premium quality
-        ingredients and excellent customer service.
-    </p>
-
-</section>
-
-<!-- Contact -->
-<section class="order" id="contact">
-
-    <h2>Contact Us</h2>
-
-    <p>📞 Phone: 03125940498</p>
-
-    <p>📍 Datta Stop, District Mansehra, Pakistan</p>
-
-    <br>
-
-    <a href="https://wa.me/923059642006" target="_blank" class="order-btn">
-    🛒 Order on WhatsApp
-</a>
-
-    <br><br>
-
-    <a href="https://maps.app.goo.gl/meQYLKkcp8U9vBHx5" target="_blank" class="order-btn">
-    📍 View on Google Maps
-</a>
-
-</section>
-
-<!-- Reviews -->
 <div class="review-popup" id="reviewPopup">
 
     <h2>⭐ Customer Reviews</h2>
@@ -327,7 +899,7 @@
 
     </div>
 
-    <hr>
+     </hr>
 
     <!-- Review Form -->
     <div class="review-form">
@@ -364,15 +936,98 @@
 
 </div>
 
-<!-- Footer -->
-<footer>
+</section>
 
-    <p>© 2026 Ummer Bakery 3D. All Rights Reserved.</p>
+<!-- Premium Footer -->
+
+<footer class="footer">
+
+
+    <div class="footer-container">
+
+
+        <div class="footer-box">
+
+            <h3>
+                🍰 Ummer Bakery 3D
+            </h3>
+
+            <p>
+                Fresh bakery products made with quality,
+                passion and love every day.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-box">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#products">
+                Products
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-box">
+
+            <h3>
+                Contact
+            </h3>
+
+            <p>
+                📞 03125940498
+            </p>
+
+            <p>
+                ✉️ omer.ghafoor5342@gmail.com
+            </p>
+
+            <p>
+                📍 Mansehra, Pakistan
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Ummer Bakery 3D. All Rights Reserved.
+        </p>
+
+    </div>
+
 
 </footer>
 
+
+
 <!-- Scroll To Top -->
 <button id="topBtn" onclick="topFunction()">⬆</button>
+
 
 <script src="script.js"></script>
 
