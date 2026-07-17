@@ -178,8 +178,227 @@ Price: Rs. ${item.price * item.quantity}
 window.addEventListener("DOMContentLoaded",()=>{
 
     updateCart();
+    loadReviews();
+});
+
+// ===============================
+// Reviews V2 - Part 1
+// ===============================
+
+let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+let selectedRating = 5;
+
+function saveReviews() {
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const stars = document.querySelectorAll("#starRating span");
+
+    stars.forEach((star, index) => {
+
+        star.addEventListener("click", () => {
+
+            selectedRating = index + 1;
+
+            stars.forEach((s, i) => {
+
+                s.style.opacity = i < selectedRating ? "1" : "0.3";
+
+            });
+
+        });
+
+    });
+
+    stars.forEach((s, i) => {
+
+        s.style.opacity = i < selectedRating ? "1" : "0.3";
+
+    });
 
 });
+
+
+// ===============================
+// Reviews V2 - Part 2A
+// ===============================
+
+function addReview() {
+
+    const name = document.getElementById("reviewName").value.trim();
+    const text = document.getElementById("reviewText").value.trim();
+
+    if (!name || !text) {
+        showMessage("⚠ Please fill all fields");
+        return;
+    }
+
+    reviews.unshift({
+        name: name,
+        rating: selectedRating,
+        text: text,
+        date: new Date().toLocaleDateString(),
+        helpful: 0
+    });
+
+    saveReviews();
+    loadReviews();
+
+    document.getElementById("reviewName").value = "";
+    document.getElementById("reviewText").value = "";
+
+    selectedRating = 5;
+
+    document.querySelectorAll("#starRating span").forEach((star, i) => {
+        star.style.opacity = i < 5 ? "1" : "0.3";
+    });
+
+    showMessage("⭐ Review Added Successfully");
+}
+
+function loadReviews() {
+
+    const reviewsList = document.getElementById("reviewsList");
+
+    reviewsList.innerHTML = "";
+
+    if (reviews.length === 0) {
+
+        reviewsList.innerHTML =
+        "<p style='text-align:center'>No reviews yet.</p>";
+
+        updateRatingSummary();
+
+        return;
+    }
+
+    reviews.forEach((review, index) => {
+
+        reviewsList.innerHTML += `
+        <div class="review-item">
+
+            <div class="review-header">
+
+                <div class="review-user">
+
+                    <div class="review-avatar">
+                        ${review.name.charAt(0).toUpperCase()}
+                    </div>
+
+                    <div>
+
+                        <div class="review-name">
+                            ${review.name}
+                        </div>
+
+                        <div class="verified">
+                            ✔ Verified Customer
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="review-date">
+                    ${review.date}
+                </div>
+
+            </div>
+
+            <div class="review-stars">
+                ${"⭐".repeat(review.rating)}
+            </div>
+
+            <div class="review-text">
+                ${review.text}
+            </div>
+
+            <div class="review-footer">
+
+                <button
+                    class="helpful-btn"
+                    onclick="helpfulReview(${index})">
+
+                    👍 Helpful (${review.helpful})
+
+                </button>
+
+            </div>
+
+        </div>
+        `;
+
+    });
+
+    updateRatingSummary();
+
+}
+
+
+// ===============================
+// Reviews V2 - Part 2B
+// ===============================
+
+function updateRatingSummary() {
+
+    const total = reviews.length;
+
+    document.getElementById("totalReviews").innerText = total;
+
+    if (total === 0) {
+
+        document.getElementById("averageRating").innerText = "0.0 ⭐";
+
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById("count" + i).innerText = "0";
+            document.getElementById("bar" + i).style.width = "0%";
+        }
+
+        return;
+    }
+
+    let sum = 0;
+    let counts = [0, 0, 0, 0, 0];
+
+    reviews.forEach(review => {
+        sum += review.rating;
+        counts[review.rating - 1]++;
+    });
+
+    const average = (sum / total).toFixed(1);
+
+    document.getElementById("averageRating").innerText =
+        average + " ⭐";
+
+    for (let i = 1; i <= 5; i++) {
+
+        document.getElementById("count" + i).innerText =
+            counts[i - 1];
+
+        document.getElementById("bar" + i).style.width =
+            ((counts[i - 1] / total) * 100) + "%";
+    }
+
+}
+
+function helpfulReview(index) {
+
+    reviews[index].helpful++;
+
+    saveReviews();
+
+    loadReviews();
+
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    loadReviews();
+
+});
+
 
 // ===============================
 // V4 Premium Effects
