@@ -280,21 +280,87 @@
 
     <h2>⭐ Customer Reviews</h2>
 
-    <h3>👤 Ali Khan</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Fresh bread and excellent quality.</p>
+    <!-- Rating Summary -->
+    <div class="review-summary">
+
+        <h1 id="averageRating">5.0 ⭐</h1>
+
+        <p>
+            Based on
+            <span id="totalReviews">0</span>
+            Reviews
+        </p>
+
+        <div class="rating-bars">
+
+            <div class="rating-row">
+                <span>5 ⭐</span>
+                <div class="bar"><div id="bar5"></div></div>
+                <span id="count5">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>4 ⭐</span>
+                <div class="bar"><div id="bar4"></div></div>
+                <span id="count4">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>3 ⭐</span>
+                <div class="bar"><div id="bar3"></div></div>
+                <span id="count3">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>2 ⭐</span>
+                <div class="bar"><div id="bar2"></div></div>
+                <span id="count2">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>1 ⭐</span>
+                <div class="bar"><div id="bar1"></div></div>
+                <span id="count1">0</span>
+            </div>
+
+        </div>
+
+    </div>
 
     <hr>
 
-    <h3>👩 Ayesha</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>The cakes are delicious.</p>
+    <!-- Review Form -->
+    <div class="review-form">
+
+        <input
+            type="text"
+            id="reviewName"
+            placeholder="Your Name">
+
+        <div class="star-rating" id="starRating">
+
+            <span data-value="1">⭐</span>
+            <span data-value="2">⭐</span>
+            <span data-value="3">⭐</span>
+            <span data-value="4">⭐</span>
+            <span data-value="5">⭐</span>
+
+        </div>
+
+        <textarea
+            id="reviewText"
+            placeholder="Write your review..."></textarea>
+
+        <button onclick="addReview()">
+            Submit Review
+        </button>
+
+    </div>
 
     <hr>
 
-    <h3>👨 Usman</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Best bakery in Datta Mansehra.</p>
+    <!-- Reviews List -->
+    <div id="reviewsList"></div>
 
 </div>
 
